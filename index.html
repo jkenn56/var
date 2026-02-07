@@ -6,12 +6,13 @@
     <style>
         body {
             height: 100vh;
-            background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
+            background: #000000;
             display: flex;
             justify-content: center;
             align-items: center;
             font-family: 'Segoe UI', sans-serif;
             margin: 0;
+            overflow: hidden;
         }
 
         @keyframes float {
@@ -20,8 +21,27 @@
             100% { transform: translateY(0px); }
         }
 
+        @keyframes fly {
+            0% {
+                opacity: 1;
+                transform: translateY(-100vh) translateX(0) rotate(0deg);
+            }
+            100% {
+                opacity: 0;
+                transform: translateY(100vh) translateX(0) rotate(360deg);
+            }
+        }
+
+        .emoji {
+            position: fixed;
+            font-size: 1rem;
+            pointer-events: none;
+            animation: fly linear infinite;
+            z-index: 1;
+        }
+
         .container {
-            background: rgb(4, 4, 4);
+            background: #ff4d6d;
             padding: 40px;
             border-radius: 20px;
             text-align: center;
@@ -29,10 +49,11 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.2);
             position: relative;
             animation: float 3s ease-in-out infinite;
+            z-index: 10;
         }
 
         h1 {
-            color: #ff4d6d;
+            color: #000000;
             margin-bottom: 20px;
         }
 
@@ -46,12 +67,12 @@
         }
 
         #yesBtn {
-            background-color: #ff4d6d;
+            background-color: #1ee18d;
             color: white;
         }
 
         #noBtn {
-            background-color: #adb5bd;
+            background-color: #5b0101;
             color: white;
             position: absolute;
         }
@@ -59,7 +80,7 @@
         #message {
             margin-top: 20px;
             font-size: 18px;
-            color: #ff4d6d;
+            color: #080808;
             display: none;
         }
     </style>
@@ -73,14 +94,14 @@
         <button id="noBtn">No </button>
 
         <div id="message">
-            You just made my heart smile <strong>💖♾️</strong> 
-            Being with you makes every day feel like Valentine’s Day 💖.  
+            <strong>You just make my heart smile 💖♾️
+            Being with you makes every day feel like a very special day God just added on me.  
             I choose you today, tomorrow, always 
-            💌Ndagukunda cyane with God we will be together forever♾️
-            <strong><b>Developed by Kennedy in help with gpt hhhhhhh cyz Ndagukunda cyanee</b></strong>
+            💌Ndagukunda cyane with God we will be together forever♾️</strong>
+            <BR>Developed by Kennedy in help with gpt hhhhhhh cyz Ndagukunda cyanee. You should have tried no and see tho Hhhhhh
         </div>
     </div>
-
+    <div id="emojis-container"></div>
     <script>
         const noBtn = document.getElementById("noBtn");
         const yesBtn = document.getElementById("yesBtn");
@@ -103,6 +124,24 @@
             yesBtn.style.display = "none";
             noBtn.style.display = "none";
         });
+
+        // Create flying emojis
+        function createFlyingEmoji() {
+            const emojis = ['❤️', '😍', '😘', '💌', '💞', '💓', '🌹','🪷','💐','🌻','🌼','🌷'];
+            const randomEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+            const emojiElement = document.createElement('div');
+            emojiElement.className = 'emoji';
+            emojiElement.textContent = randomEmoji;
+            emojiElement.style.left = Math.random() * 100 + 'vw';
+            emojiElement.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            emojiElement.style.animationDelay = '0s';
+            document.getElementById('emojis-container').appendChild(emojiElement);
+            
+            setTimeout(() => emojiElement.remove(), 7000);
+        }
+
+     
+        setInterval(createFlyingEmoji, 300);
     </script>
 
 </body>
