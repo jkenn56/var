@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>💍</title>
+    <style>
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #ff4d6d, #ff8fa3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+        }
+
+        @keyframes float {
+            0%   { transform: translateY(0px); }
+            50%  { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .container {
+            background: rgb(4, 4, 4);
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            width: 320px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            position: relative;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        h1 {
+            color: #ff4d6d;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            margin: 10px;
+        }
+
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+        }
+
+        #noBtn {
+            background-color: #adb5bd;
+            color: white;
+            position: absolute;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #ff4d6d;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Will you be my Valentine?</h1>
+
+        <button id="yesBtn">Yes </button>
+        <button id="noBtn">No </button>
+
+        <div id="message">
+            You just made my heart smile <strong>💖♾️</strong> 
+            Being with you makes every day feel like Valentine’s Day 💖.  
+            I choose you today, tomorrow, always 
+            💌Ndagukunda cyane with God we will be together forever♾️
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById("noBtn");
+        const yesBtn = document.getElementById("yesBtn");
+        const message = document.getElementById("message");
+        const container = document.querySelector(".container");
+
+        noBtn.addEventListener("mouseover", () => {
+            const maxX = container.clientWidth - noBtn.clientWidth;
+            const maxY = container.clientHeight - noBtn.clientHeight;
+
+            const randomX = Math.random() * maxX;
+            const randomY = Math.random() * maxY;
+
+            noBtn.style.left = randomX + "px";
+            noBtn.style.top = randomY + "px";
+        });
+
+        yesBtn.addEventListener("click", () => {
+            message.style.display = "block";
+            yesBtn.style.display = "none";
+            noBtn.style.display = "none";
+        });
+    </script>
+
+</body>
+</html>
